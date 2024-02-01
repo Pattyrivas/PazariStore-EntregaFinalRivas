@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        background-color: rgb(245, 238, 230);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+        background-color: rgb(243, 215, 202);
+    }
+}
