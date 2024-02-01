@@ -2,7 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
-function CartWidget() {
+
+function Cartwidget() {
     const [count, useCount] = useState(0);
     return (
         <div className='contenedor-cart'>
@@ -14,4 +15,4 @@ function CartWidget() {
     )
 }
 
-export default CartWidget
+export default Cartwidget

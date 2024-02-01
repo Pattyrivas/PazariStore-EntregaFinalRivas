@@ -1,4 +1,4 @@
-import CartWidget from "./Cartwidget"
+import Cartwidget from './Cartwidget'
 import Logo from "../assets/logoPazari.jpg"
 const Navbar = () => {
     const btnLink = 'text-black no-underline hover:underline cursor-pointer mr-4'
@@ -15,7 +15,7 @@ const Navbar = () => {
                     <a className={btnLink}>Collares</a>
                     <a className={btnLink}>Zarcillos</a>
                 </nav>
-                <CartWidget />
+                <Cartwidget />
             </div>
         </header>
     )
