@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Collar Estella",
+        "price": 10.990,
+        "stock": 5,
+        "img": "1.jpg",
+        "category": "collar"
+    },
+    {
+        "id": 2,
+        "name": "Set Tiffany",
+        "price": 13.990,
+        "stock": 8,
+        "img": "2.jpg",
+        "category": "set"
+    },
+    {
+        "id": 3,
+        "name": "Aros trinidad",
+        "price": 4.990,
+        "stock": 4,
+        "img": "3.jpg",
+        "category": "aros"
+    },
+    {
+        "id": 4,
+        "name": "Aros corazón",
+        "price": 3.990,
+        "stock": 3,
+        "img": "4.jpg",
+        "category": "aros"
+    },
+    {
+        "id": 5,
+        "name": "Collar Mariposas",
+        "price": 8.990,
+        "stock": 6,
+        "img": "5.jpg",
+        "category": "collar"
+    },
+    {
+        "id": 6,
+        "name": "Set Estrella",
+        "price": 12.990,
+        "stock": 7,
+        "img": "6.jpg",
+        "category": "set"
+    },
+    {
+        "id": 7,
+        "name": "Collar Perlas",
+        "price": 12.990,
+        "stock": 7,
+        "img": "7.jpg",
+        "category": "collar"
+    },
+    {
+        "id": 8,
+        "name": "Collar Cupido",
+        "price": 10.990,
+        "stock": 5,
+        "img": "8.jpg",
+        "category": "collar"
+    },
+    {
+        "id": 9,
+        "name": "Set Aros Corazonada",
+        "price": 6.990,
+        "stock": 5,
+        "img": "9.jpg",
+        "category": "set"
+    },
+    {
+        "id": 10,
+        "name": "Collar Candado",
+        "price": 10.990,
+        "stock": 5,
+        "img": "10.jpg",
+        "category": "collar"
+    }
+]

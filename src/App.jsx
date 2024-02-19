@@ -1,14 +1,30 @@
-import ItemListContainer from './components/ItemListContainer'
-import Navbar from './components/Navbar'
+import { ItemListContainer } from './components/ItemListContainer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Navbar } from './components/Navbar'
+import { Footer } from './components/Footer'
+import { Cart } from './components/Cart'
+import { Checkout } from './components/Checkout'
+import { ItemDetailsContainer } from './components/ItemDetailsContainer'
+import { NotFound } from './components/NotFound'
 import './styles/App.css'
 
-function App() {
+export const App = () => {
     return (
-        <>
-            <Navbar />
-            <ItemListContainer mensaje={"Proximamente... "} subMensaje={'Encontraras tu nuevo accesorio favorito aquí'} />
-        </>
+        <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<ItemListContainer />} />
+          <Route path='/category/:cid' element={<ItemListContainer />} />
+          <Route path='/product/:pid' element={<ItemDetailsContainer />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+
     )
 }
 
-export default App
+
+
