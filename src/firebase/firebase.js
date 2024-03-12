@@ -1,4 +1,30 @@
-[
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, doc, addDoc, getDocs, getDoc, updateDoc, deleteDoc } from 'firebase/firestore'
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAFQydomllwSO3bam-hwowIkUXq_Psrrq4",
+    authDomain: "pazaristore-e577b.firebaseapp.com",
+    projectId: "pazaristore-e577b",
+    storageBucket: "pazaristore-e577b.appspot.com",
+    messagingSenderId: "647732253001",
+    appId: "1:647732253001:web:93659b9d7285275bdf0a98"
+};
+
+const app = initializeApp(firebaseConfig);
+
+//Consultar a la BDD
+const bdd = getFirestore()
+
+/*
+    Create
+    Read
+    Update
+    Delete
+*/
+
+//Crear productos
+
+const prods = [
     {
         "name": "Collar Estella",
         "price": 10.990,
@@ -70,3 +96,59 @@
         "category": "collar"
     }
 ]
+
+export const createProducts = async () => {
+    prods.forEach(async (prod) => {
+        await addDoc(collection(bdd, "productos"), {
+            name: prod.name,
+            price: prod.price,
+            stock: prod.stock,
+            img: prod.img,
+            category: prod.category
+        })
+    })
+}
+
+// Consultar productos
+export const getProducts = async () => {
+    const productos = await getDocs(collection(bdd, "productos"))
+    const items = productos.docs.map(prod => { return { ...prod.data(), id: prod.id } })
+    return items
+}
+
+//Consultar Producto
+export const getProduct = async (id) => {
+    const producto = await getDoc(doc(bdd, "productos", id))
+    const item = { ...producto.data(), id: producto.id }
+    return item
+}
+
+// Actualizar Producto
+
+export const updateProduct = async (id, info) => {
+    await updateDoc(doc(bdd, "productos", id), info)
+}
+
+// Eliminar producto
+
+export const deleteProduct = async (id) => {
+    await deleteDoc(doc(bdd, "productos", id))
+}
+
+//CREATE AND READ Ordenes de Compra
+
+export const createOrdenCompra = async (cliente, precioTotal, carrito, fecha) => {
+    const ordenCompra = await addDoc(collection(bdd, "ordenesCompra"), {
+        cliente: cliente,
+        items: carrito,
+        precioTotal: precioTotal,
+        fecha: fecha
+    })
+    return ordenCompra
+}
+
+export const getOrdenCompra = async (id) => {
+    const ordenCompra = await getDoc(doc(bdd, "ordenesCompra", id))
+    const item = { ...ordenCompra.data(), id: ordenCompra.id }
+    return item
+}

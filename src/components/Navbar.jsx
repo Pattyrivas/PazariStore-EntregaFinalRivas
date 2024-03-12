@@ -1,4 +1,4 @@
-import Cartwidget from './Cartwidget'
+import { CartWidget } from "./CartWidget"
 import Logo from "../assets/logoPazari.jpg"
 import { Link } from "react-router-dom"
 
@@ -17,7 +17,7 @@ export const Navbar = () => {
                     <Link to={'/category/collar'} className={btnLink}>Collares</Link>
                     <Link to={'/category/aros'} className={btnLink}>Aros</Link>
                 </nav>
-                <Cartwidget />
+                <CartWidget />
             </div>
         </header>
     )

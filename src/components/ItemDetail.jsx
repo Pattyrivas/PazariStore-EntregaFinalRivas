@@ -1,11 +1,24 @@
 import { useCounter } from "./hooks/useCounter"
 import { Link } from "react-router-dom"
+import { useCarritoContext } from "../context/CartContext"
+import { toast } from "react-toastify"
 
 export const ItemDetail = ({ item }) => {
+    const { addItem } = useCarritoContext()
     const { count, increment, decrement, reset } = useCounter(1, item.stock, 1)
 
     const handleAddToCart = () => {
-        console.log("Producto agregado al carrito")
+        addItem(item, count)
+        toast.success(`Producto agregado al carrito correctamente`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark"
+        })
     }
     return (
         <section className="text-gray-600 body-font overflow-hidden bg-white">
@@ -14,7 +27,7 @@ export const ItemDetail = ({ item }) => {
                     <Link to={'/'}>
                         <button className="absolute top-4 right-4 text-gray-700 hover:text-gray-900">Cerrar</button>
                     </Link>
-                    <img alt={`Imagen de ${item.name}`} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={`../img/${item.img}`} />
+                    <img alt={`Imagen de ${item.name}`} className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={`${item.img}`} />
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">Pazari Store</h2>
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.name}</h1>
