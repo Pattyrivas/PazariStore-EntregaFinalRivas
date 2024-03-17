@@ -8,9 +8,9 @@ export const CartWidget = () => {
     return (
         <div className='contenedor-cart'>
             <Link to={'/cart'}>
-                <button className='button-cart inline-flex items-center'>
+                <button className='button-cart inline-flex items-center px-10'>
                     <FontAwesomeIcon icon={faCartShopping} style={{ color: "#03001C", fontSize: "20px" }} />
-                    <span>{getItemQuantity()}</span>
+                    <span className='px-4'>{getItemQuantity()}</span>
                 </button>
             </Link>
         </div>

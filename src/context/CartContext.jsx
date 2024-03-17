@@ -1,19 +1,18 @@
 import { useState, createContext, useContext } from "react";
 
-const CarritoContext = createContext() //Creando el contexto (por el momento vacio)
+const CarritoContext = createContext()
 
-export const useCarritoContext = () => useContext(CarritoContext) //Funcion para consultar mi contexto en otros componentes
+export const useCarritoContext = () => useContext(CarritoContext)
 
-export const CarritoProvider = (props) => { //Forma de proveer el contexto, puede recibir props
+export const CarritoProvider = (props) => {
 
     const [carrito, setCarrito] = useState([])
 
-    //Buscar Producto
+
     const isInCart = (id) => {
-        return carrito.some(prod => prod.id === id) //V o F, si existe o no el producto en el carrito
+        return carrito.some(prod => prod.id === id)
     }
 
-    //Agregar producto
     const addItem = (item, cantidad) => {
         if (isInCart(item.id)) {
 
@@ -29,27 +28,14 @@ export const CarritoProvider = (props) => { //Forma de proveer el contexto, pued
                 quantity: cantidad
             }
 
-            /*const aux = [...carrito]
-            aux.push(newItem)
-            setCarrito(aux)*/
-
             setCarrito([...carrito, newItem]) //Guardo en el carrito el nuevo producto
         }
     }
 
-    //Eliminar producto
     const removeItem = (id) => {
-        /*const aux = [...carrito]
-        const indice = aux.findIndex(prod => prod.id === id)
-
-        if (indice != -1) {
-            setCarrito(aux.splice(indice, 1))
-        }*/
-
         setCarrito(carrito.filter(prod => prod.id !== id))
     }
 
-    //Vaciar carrito
     const emptyCart = () => {
         setCarrito([])
     }
@@ -61,12 +47,10 @@ export const CarritoProvider = (props) => { //Forma de proveer el contexto, pued
         setCarrito([...aux])
     }
 
-    //Obtener cantidad de productos
     const getItemQuantity = () => {
         return carrito.reduce((acum, prod) => acum += prod.quantity, 0)
     }
 
-    //Obtener precio total del carrito
     const totalPrice = () => {
         return carrito.reduce((acum, prod) => acum += (prod.quantity * prod.price), 0)
     }

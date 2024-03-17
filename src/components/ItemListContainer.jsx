@@ -24,8 +24,14 @@ export const ItemListContainer = () => {
 
     return (
         <div>
-            <ItemList products={products} plantilla="Item" />
+            <div className="flex flex-col text-center w-full mb-12 pt-10">
+                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-black">Accesorios: </h1>
+            </div>
+            <div className="flex flex-wrap gap-12 justify-center ">
+                <ItemList products={products} plantilla="Item" />
+            </div>
         </div>
+
     )
 }
 

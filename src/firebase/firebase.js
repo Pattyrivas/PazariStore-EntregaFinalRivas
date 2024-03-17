@@ -12,17 +12,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-//Consultar a la BDD
 const bdd = getFirestore()
-
-/*
-    Create
-    Read
-    Update
-    Delete
-*/
-
-//Crear productos
 
 const prods = [
     {
@@ -109,33 +99,27 @@ export const createProducts = async () => {
     })
 }
 
-// Consultar productos
 export const getProducts = async () => {
     const productos = await getDocs(collection(bdd, "productos"))
     const items = productos.docs.map(prod => { return { ...prod.data(), id: prod.id } })
     return items
 }
 
-//Consultar Producto
 export const getProduct = async (id) => {
     const producto = await getDoc(doc(bdd, "productos", id))
     const item = { ...producto.data(), id: producto.id }
     return item
 }
 
-// Actualizar Producto
-
 export const updateProduct = async (id, info) => {
     await updateDoc(doc(bdd, "productos", id), info)
 }
-
-// Eliminar producto
 
 export const deleteProduct = async (id) => {
     await deleteDoc(doc(bdd, "productos", id))
 }
 
-//CREATE AND READ Ordenes de Compra
+//Ordenes de Compra
 
 export const createOrdenCompra = async (cliente, precioTotal, carrito, fecha) => {
     const ordenCompra = await addDoc(collection(bdd, "ordenesCompra"), {

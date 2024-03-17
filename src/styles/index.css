@@ -4,11 +4,11 @@
 
 @layer base {
     body {
-        background-color: rgb(245, 238, 230);
+        background-color: whitesmoke;
         font-family: 'Poppins', sans-serif;
     }
 
-    header {
+    header, footer {
         background-color: rgb(243, 215, 202);
     }
 }

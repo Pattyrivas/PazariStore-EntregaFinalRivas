@@ -1,39 +1,56 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { useCarritoContext } from "../context/CartContext"
 import { useCounter } from './hooks/useCounter.jsx'
 
 export const ItemCart = ({ product }) => {
     const { removeItem, updateItem } = useCarritoContext()
     const { count, increment, decrement } = useCounter(product.quantity, product.stock, 1)
+
     return (
-        <div className="flex items-center p-4 border-gray-300">
-            <div className="mr-4">
-                <img src={`${product.img}`} alt={`Imagen de ${product.title}`} className="w-24 h-24 object-cover" />
-            </div>
-            <div className="flex-1">
-                <h3 className="text-lg font-semibold">{product.title} {product.category}</h3>
-            </div>
-            <div className="flex items-center">
-                <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={async () => {
-                    updateItem(product.id, count - 1)
-                    decrement()
-                }}>
-                    -
-                </button>
-                <span className="text-xl font-bold">{count}</span>
-                <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={() => {
-                    updateItem(product.id, count + 1)
-                    increment()
-                }}>
-                    +
-                </button>
-            </div>
-            <div className="ml-4">
-                <p className="text-lg font-semibold">Subtotal: ${product.price * count}</p>
-            </div>
-            <div className="ml-4">
-                <button className="bg-red-500  text-white px4 py-2 rounded" onClick={() => removeItem(product.id)}>
-                    Eliminar
-                </button>
+        <div className="md:w-3/4 ">
+            <div className="bg-white rounded-lg shadow-md p-6 mb-4 ">
+                <table className="w-full">
+                    <thead>
+                        <tr>
+                            <th className="text-left font-semibold">Producto</th>
+                            <th className="text-left font-semibold">Precio</th>
+                            <th className="text-left font-semibold">Cantidad</th>
+                            <th className="text-left font-semibold">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="py-4">
+                                <div className="flex items-center">
+                                    <img src={`${product.img}`} alt={`Imagen de ${product.title}`}
+                                        className="w-24 h-24 object-cover" />
+                                    <span className="font-semibold">{product.title}</span>
+                                </div>
+                            </td>
+                            <td className="py-4">${product.price}</td>
+                            <td className="py-4">
+                                <div className="flex items-center">
+                                    <button className="border rounded-md py-2 px-4 mr-2" onClick={async () => {
+                                        if (count === 1) {
+                                            return;
+                                        } else {
+                                            updateItem(product.id, count - 1)
+                                            decrement()
+                                        }
+                                    }}>-</button>
+                                    <span className="text-center w-8">{count}</span>
+                                    <button className="border rounded-md py-2 px-4 ml-2" onClick={() => {
+                                        updateItem(product.id, count + 1)
+                                        increment()
+                                    }}>+</button>
+                                    <button className="border rounded-md py-2 px-4 ml-2" onClick={() => removeItem(product.id)}><FontAwesomeIcon icon={faTrashCan} /></button>
+                                </div>
+                            </td>
+                            <td className="py-4">${product.price * count}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     )
