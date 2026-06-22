@@ -2,7 +2,7 @@
 
 E-commerce de accesorios desarrollado como proyecto final del curso de Desarrollo Frontend en Coderhouse. Permite explorar un catálogo de productos, agregarlos a un carrito de compra y simular el proceso de checkout.
 
-🔗 **Demo en vivo:** _agregar link si está desplegado (ej. Vercel/Netlify)_
+🔗 **Demo en vivo:** https://pazaristore-deploy.vercel.app
 
 ## ✨ Funcionalidades
 
